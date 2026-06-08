@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Personal Portfolio</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero" id="home">
+      <div class="container hero-content">
+        <div>
+          <p class="eyebrow">Hi, I'm</p>
+          <h1>Zen Developer</h1>
+          <p class="subtitle">
+            I build modern websites, apps, and thoughtful digital experiences.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#projects">View Projects</a>
+            <a class="button button-secondary" href="#contact">Contact Me</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="avatar">ZD</div>
+          <p>
+            Front-end developer with a passion for clean design, accessible
+            interfaces, and smooth performance.
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="section intro" id="about">
+        <div class="container">
+          <h2>About Me</h2>
+          <p>
+            I am a web developer focused on building beautiful, responsive
+            websites that look great on every device. I enjoy turning ideas
+            into polished experiences using HTML, CSS, and JavaScript.
+          </p>
+          <div class="about-grid">
+            <div>
+              <h3>Skills</h3>
+              <ul>
+                <li>HTML & CSS</li>
+                <li>JavaScript</li>
+                <li>Responsive Design</li>
+                <li>Performance Optimization</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Tools</h3>
+              <ul>
+                <li>VS Code</li>
+                <li>GitHub</li>
+                <li>Figma</li>
+                <li>Netlify / GitHub Pages</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section projects" id="projects">
+        <div class="container">
+          <div class="section-header">
+            <h2>Projects</h2>
+            <p>Selected work showcasing my design and development skills.</p>
+          </div>
+          <div class="project-grid">
+            <article class="project-card">
+              <h3>Portfolio Website</h3>
+              <p>
+                A responsive single-page portfolio with smooth scroll and
+                modern layout.
+              </p>
+              <a href="#" class="project-link">Live Demo</a>
+            </article>
+            <article class="project-card">
+              <h3>Task Manager</h3>
+              <p>
+                A clean task tracking app with drag-and-drop and local storage.
+              </p>
+              <a href="#" class="project-link">Live Demo</a>
+            </article>
+            <article class="project-card">
+              <h3>Blog Landing Page</h3>
+              <p>
+                A stylish blog landing page optimized for readability and
+                mobile devices.
+              </p>
+              <a href="#" class="project-link">Live Demo</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section contact" id="contact">
+        <div class="container contact-grid">
+          <div>
+            <h2>Get in Touch</h2>
+            <p>
+              Interested in working together? Send a message and let's build
+              something great.
+            </p>
+            <div class="contact-details">
+              <p><strong>Email:</strong> hello@example.com</p>
+              <p><strong>Location:</strong> Remote</p>
+            </div>
+          </div>
+          <form id="contactForm" class="contact-form">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required />
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required />
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="How can I help?" required></textarea>
+
+            <button type="submit" class="button button-primary">Send Message</button>
+            <p id="formMessage" class="form-message"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-content">
+        <p>&copy; 2026 Zen Developer. Built for GitHub Pages.</p>
+        <nav class="footer-nav">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
