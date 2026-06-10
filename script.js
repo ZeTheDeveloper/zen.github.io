@@ -92,7 +92,6 @@ if (profileCard) {
   };
 
   profileCard.addEventListener('pointerdown', pointerDown);
-  profileCard.addEventListener('pointermove', pointerMove);
   profileCard.addEventListener('pointerup', pointerUp);
   profileCard.addEventListener('pointerleave', () => {
     if (isDragging) {
