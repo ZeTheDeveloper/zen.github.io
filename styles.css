@@ -72,17 +72,22 @@ html {
   padding: 5.5rem 0 4rem;
 }
 
-.hero-content {
+.hero-inner {
   display: grid;
-  grid-template-columns: 1.4fr 0.9fr;
+  grid-template-columns: minmax(0, 420px) 1fr;
   gap: 2.5rem;
   align-items: center;
 }
 
+.hero-content {
+  display: grid;
+  gap: 1rem;
+}
+
 .hero-banner {
   display: flex;
-  justify-content: center;
-  margin-bottom: 2rem;
+  justify-content: flex-start;
+  margin-bottom: 0;
 }
 
 .hero-banner img {
@@ -321,11 +326,15 @@ h1 {
 }
 
 @media (max-width: 850px) {
-  .hero-content,
+  .hero-inner,
   .contact-grid,
   .project-grid,
   .about-grid {
     grid-template-columns: 1fr;
+  }
+
+  .hero-banner {
+    justify-content: center;
   }
 
   .hero {
