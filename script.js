@@ -20,27 +20,46 @@ revealElements.forEach((element) => revealObserver.observe(element));
 const profileCard = document.querySelector('#profileCard');
 
 if (profileCard) {
+  let isFlipped = false;
+  let currentX = 0;
+  let currentY = 0;
   let isDragging = false;
   let startX = 0;
   let startY = 0;
-  let currentX = 0;
-  let currentY = 0;
 
   const setCardRotation = (x, y) => {
     profileCard.style.setProperty('--card-rotate-x', `${x}deg`);
     profileCard.style.setProperty('--card-rotate-y', `${y}deg`);
   };
 
+  const toggleFlip = () => {
+    isFlipped = !isFlipped;
+    if (isFlipped) {
+      setCardRotation(0, 180);
+      currentY = 180;
+    } else {
+      setCardRotation(0, 0);
+      currentY = 0;
+    }
+  };
+
   const pointerDown = (event) => {
     if (event.button !== 0) return;
-    event.preventDefault();
-    isDragging = true;
     startX = event.clientX;
     startY = event.clientY;
+    isDragging = false;
     profileCard.setPointerCapture(event.pointerId);
   };
 
   const pointerMove = (event) => {
+    if (!isDragging) {
+      const deltaX = Math.abs(event.clientX - startX);
+      const deltaY = Math.abs(event.clientY - startY);
+      if (deltaX > 5 || deltaY > 5) {
+        isDragging = true;
+      }
+    }
+
     if (!isDragging) return;
     event.preventDefault();
 
@@ -54,14 +73,17 @@ if (profileCard) {
   };
 
   const pointerUp = (event) => {
-    if (!isDragging) return;
+    if (!isDragging) {
+      toggleFlip();
+    } else {
+      const nextX = Number(profileCard.style.getPropertyValue('--card-rotate-x').replace('deg', '')) || currentX;
+      const nextY = Number(profileCard.style.getPropertyValue('--card-rotate-y').replace('deg', '')) || currentY;
+
+      currentX = nextX;
+      currentY = nextY;
+      isFlipped = Math.abs(nextY % 360) > 90;
+    }
     isDragging = false;
-
-    const nextX = Number(profileCard.style.getPropertyValue('--card-rotate-x').replace('deg', '')) || currentX;
-    const nextY = Number(profileCard.style.getPropertyValue('--card-rotate-y').replace('deg', '')) || currentY;
-
-    currentX = nextX;
-    currentY = nextY;
     try {
       profileCard.releasePointerCapture(event.pointerId);
     } catch (error) {
@@ -72,7 +94,11 @@ if (profileCard) {
   profileCard.addEventListener('pointerdown', pointerDown);
   profileCard.addEventListener('pointermove', pointerMove);
   profileCard.addEventListener('pointerup', pointerUp);
-  profileCard.addEventListener('pointerleave', pointerUp);
+  profileCard.addEventListener('pointerleave', () => {
+    if (isDragging) {
+      isDragging = false;
+    }
+  });
   profileCard.addEventListener('pointercancel', pointerUp);
   profileCard.addEventListener('dragstart', (event) => event.preventDefault());
 }
