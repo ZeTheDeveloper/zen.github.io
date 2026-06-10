@@ -10,8 +10,22 @@
     <header class="hero" id="home">
       <div class="container hero-inner">
         <div class="hero-banner reveal">
-          <!-- Use a circular/profile photo here -->
-          <img class="profile-photo" src="personalimage.jpeg" alt="Profile photo of Zen" />
+          <div class="profile-card-wrapper">
+            <div class="profile-card" id="profileCard" aria-label="Interactive profile card" tabindex="0">
+              <div class="profile-card__inner">
+                <div class="profile-card__face profile-card__face--front">
+                  <img class="profile-photo" src="personalimage.jpeg" alt="Profile photo of Zen" />
+                </div>
+                <div class="profile-card__face profile-card__face--back">
+                  <div class="profile-back">
+                    <p>Zen</p>
+                    <p>Backend Developer</p>
+                    <p>.NET · Kafka · SQL</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="hero-content reveal">
           <div>
