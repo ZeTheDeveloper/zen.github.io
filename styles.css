@@ -108,6 +108,13 @@ html {
   transition: transform 0.35s ease;
   transform: rotateX(var(--card-rotate-x, 0deg)) rotateY(var(--card-rotate-y, 0deg));
   will-change: transform;
+  user-select: none;
+}
+
+.profile-card img {
+  user-drag: none;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 .profile-card:active {

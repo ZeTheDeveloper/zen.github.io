@@ -32,6 +32,8 @@ if (profileCard) {
   };
 
   const pointerDown = (event) => {
+    if (event.button !== 0) return;
+    event.preventDefault();
     isDragging = true;
     startX = event.clientX;
     startY = event.clientY;
@@ -40,6 +42,7 @@ if (profileCard) {
 
   const pointerMove = (event) => {
     if (!isDragging) return;
+    event.preventDefault();
 
     const deltaX = event.clientX - startX;
     const deltaY = event.clientY - startY;
@@ -59,7 +62,11 @@ if (profileCard) {
 
     currentX = nextX;
     currentY = nextY;
-    profileCard.releasePointerCapture(event.pointerId);
+    try {
+      profileCard.releasePointerCapture(event.pointerId);
+    } catch (error) {
+      // ignore if pointer was already released
+    }
   };
 
   profileCard.addEventListener('pointerdown', pointerDown);
@@ -67,6 +74,7 @@ if (profileCard) {
   profileCard.addEventListener('pointerup', pointerUp);
   profileCard.addEventListener('pointerleave', pointerUp);
   profileCard.addEventListener('pointercancel', pointerUp);
+  profileCard.addEventListener('dragstart', (event) => event.preventDefault());
 }
 
 form.addEventListener('submit', (event) => {
