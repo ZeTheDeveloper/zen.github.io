@@ -94,6 +94,7 @@ html {
 .profile-card-wrapper {
   width: min(100%, 320px);
   max-width: 340px;
+  animation: cardBounce 3.5s ease-in-out infinite;
 }
 
 .profile-card {
@@ -101,10 +102,11 @@ html {
   aspect-ratio: 1 / 1;
   position: relative;
   transform-style: preserve-3d;
+  touch-action: none;
   cursor: grab;
   border-radius: 32px;
   transition: transform 0.35s ease;
-  animation: cardBounce 3.5s ease-in-out infinite;
+  transform: rotateX(var(--card-rotate-x, 0deg)) rotateY(var(--card-rotate-y, 0deg));
   will-change: transform;
 }
 
@@ -163,10 +165,10 @@ html {
 
 @keyframes cardBounce {
   0%, 100% {
-    transform: translateY(0) rotateX(var(--card-rotate-x, 0deg)) rotateY(var(--card-rotate-y, 0deg));
+    transform: translateY(0) scale(1);
   }
   50% {
-    transform: translateY(-8px) rotateX(var(--card-rotate-x, 0deg)) rotateY(var(--card-rotate-y, 0deg));
+    transform: translateY(-10px) scale(1.02);
   }
 }
 

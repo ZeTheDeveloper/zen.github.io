@@ -66,6 +66,7 @@ if (profileCard) {
   profileCard.addEventListener('pointermove', pointerMove);
   profileCard.addEventListener('pointerup', pointerUp);
   profileCard.addEventListener('pointerleave', pointerUp);
+  profileCard.addEventListener('pointercancel', pointerUp);
 }
 
 form.addEventListener('submit', (event) => {
