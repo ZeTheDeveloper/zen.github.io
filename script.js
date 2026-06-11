@@ -88,7 +88,6 @@ form.addEventListener('submit', (event) => {
     messageText.textContent = 'Please fill in every field before sending.';
     return;
   }
-
-  messageText.textContent = `Thanks, ${name}! Your message is ready to be sent.`;
+  messageText.textContent = `Thanks, ${name}! Unfortunately, this form is not connected to a backend, so your message won't be sent. But I appreciate your effort! Feel free to reach out via email at <a href="mailto:leezexuan4@gmail.com">leezexuan4@gmail.com</a>.  `;
   form.reset();
 });
