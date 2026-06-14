@@ -328,6 +328,86 @@ h1 {
   margin-bottom: 0.75rem;
 }
 
+/* Slot-machine style scrolling lists for skills/tools */
+.slot-machine {
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid rgba(15, 23, 42, 0.05);
+  background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(248,250,252,0.9));
+  box-shadow: 0 8px 20px rgba(15,23,42,0.04);
+  padding: 0.5rem;
+  width: 100%;
+}
+
+.slot-list {
+  display: block;
+  /* duplicated tracks stack vertically; translateY(-50%) will loop */
+  animation: slotScroll 10s linear infinite;
+}
+
+.slot-track {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.slot-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0.75rem;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.4);
+}
+
+/* Fixed item height so the slot viewport can show exactly 3 items */
+:root {
+  --slot-item-height: 54px;
+}
+
+.slot-item {
+  height: var(--slot-item-height);
+  box-sizing: border-box;
+}
+
+/* Make the visible viewport exactly 3 items tall (including gaps and padding)
+   Calculation: 3 * item-height + total-gap + container vertical padding
+   gap between items is 0.5rem (0.5rem * 2 gaps = 1rem). container padding-top+bottom = 1rem */
+.slot-machine {
+  height: calc(var(--slot-item-height) * 3 + 1rem + 1rem);
+}
+
+.slot-item .icon {
+  display: inline-grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(99,102,241,0.12), rgba(56,189,248,0.08));
+}
+
+.slot-item .label {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* Slightly different speeds for variety */
+.slot-machine:nth-of-type(1) .slot-list { animation-duration: 10s; }
+.slot-machine:nth-of-type(2) .slot-list { animation-duration: 8.5s; }
+
+@keyframes slotScroll {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+/* Pause when hovered or focused for accessibility */
+.slot-machine:hover .slot-list,
+.slot-machine:focus-within .slot-list {
+  animation-play-state: paused;
+}
+
+
 .project-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
