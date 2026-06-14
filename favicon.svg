@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="AI developer icon">
+  <rect width="64" height="64" rx="18" fill="#4f46e5"/>
+  <rect x="16" y="18" width="32" height="28" rx="6" fill="#eef2ff"/>
+  <path d="M26 26h12M26 32h12M26 38h8" stroke="#4f46e5" stroke-width="3" stroke-linecap="round"/>
+  <path d="M20 14v6M20 44v6M44 14v6M44 44v6M14 20h6M14 44h6M50 20h6M50 44h6" stroke="#eef2ff" stroke-width="3" stroke-linecap="round"/>
+</svg>
