@@ -3,6 +3,7 @@
 import { useRef, useState } from 'react';
 
 export default function ProfileCard() {
+  const assetBasePath = process.env.NODE_ENV === 'production' ? '/zen.github.io' : '';
   const cardRef = useRef(null);
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
   const dragRef = useRef(null);
@@ -57,7 +58,7 @@ export default function ProfileCard() {
       >
         <div className="profile-card__inner">
           <div className="profile-card__face profile-card__face--front">
-            <img src="/personalimage.jpeg" alt="Profile photo of Zen" draggable="false" />
+            <img src={`${assetBasePath}/personalimage.jpeg`} alt="Profile photo of Zen" draggable="false" />
             <span className="card-tag">ZEN / 2026</span>
           </div>
           <div className="profile-card__face profile-card__face--back">
